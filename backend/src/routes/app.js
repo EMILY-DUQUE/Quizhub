@@ -1,35 +1,21 @@
 const express = require("express");
-const app = express();
-
-app.use(express.json());
-
-// ✅ Importar y ejecutar la conexión a la base de datos
-require("./db");
-
-// ✅ Importar configuración del puerto
-const { app: appConfig } = require("./config");
-
-// ✅ Ruta de prueba (para ver algo en localhost:4000)
-app.get("/", (req, res) => {
-  res.send("🚀 Servidor funcionando correctamente en localhost:4000");
-});
-
-// ✅ Ruta para probar la base de datos (opcional)
 const pool = require("./db");
-app.get("/test-db", async (req, res) => {
+
+
+const app = express();
+app.set("port", 3000);
+
+// Ruta para ver los datos de la tabla
+app.get("/users", async (req, res) => {
   try {
-    const result = await pool.query("SELECT NOW()");
-    res.json({
-      message: "✅ Conectado a la base de datos",
-      time: result.rows[0],
-    });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    const result = await pool.query("SELECT * FROM users");
+    res.json(result.rows); // devuelve los registros
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error consultando la base de datos");
   }
 });
 
-// ✅ Asignar puerto
-app.set("port", appConfig.port);
-
-// ✅ Exportar app
-module.exports = app;
+app.listen(app.get("port"), () => {
+  console.log("Servidor escuchando en el puerto", app.get("port"));
+});
