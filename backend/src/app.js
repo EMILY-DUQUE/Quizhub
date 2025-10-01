@@ -1,6 +1,6 @@
 // src/routes/app.js
 const express = require("express");
-const pool = require("../config/db");
+const pool = require("./config/db");
 const bcrypt = require("bcryptjs");
 
 const app = express();
