@@ -2,12 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/routes/app.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "start": "node src/routes/app.js",
+    "dev": "nodemon src/routes/app.js"
   },
-  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
