@@ -1,17 +1,10 @@
-// src/config/db.js
-const { Pool } = require("pg");
+const { Sequelize } = require("sequelize");
 
-const pool = new Pool({
-  user: "postgres",
+const sequelize = new Sequelize("Quizhub", "postgres", "Hk1143985102", {
   host: "localhost",
-  password: "postgres",
-  database: "Quizhub",
-  port: 5432,
+  port: 5433,
+  dialect: "postgres",
+  logging: false,
 });
 
-pool
-  .connect()
-  .then(() => console.log("✅ Conectado a la base de datos"))
-  .catch((err) => console.error("❌ Error al conectar:", err));
-
-module.exports = pool;
+module.exports = sequelize;
