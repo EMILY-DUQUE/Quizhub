@@ -1,11 +1,11 @@
-// importar app
-const app = require('./routes/app');
+//crear cosntante app que sera requerida y la ruta 
 
-app.get('/', (req, res) => {
-  res.send('Servidor funcionando ✅');
-});
+const app = require('./app');
 
-// inicializar servidor
-app.listen(app.get("port"), () => {
-    console.log("Servidor escuchando en el puerto", app.get("port"));
+//inicializar nuestro servirdo 
+
+app.listen(app.get('port'), ()=> {
+
+    console.log("servidor escuchando en el puerto", app.get('port'));
+
 });
