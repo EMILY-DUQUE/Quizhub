@@ -1,8 +1,8 @@
-const pool = require('../db');
+// src/models/userModel.js
+const pool = require('../config/db');
 
 const UserModel = {
-   //Obtener todos los usuarios
- 
+  //Obtener todos los usuarios
   getAll: async () => {
     const query = 'SELECT id, username, email, total_score, created_at FROM users ORDER BY total_score DESC';
     const result = await pool.query(query);
@@ -10,7 +10,6 @@ const UserModel = {
   },
 
   //Obtener usuario por ID
-
   getById: async (id) => {
     const query = 'SELECT id, username, email, total_score, created_at FROM users WHERE id = $1';
     const result = await pool.query(query, [id]);
@@ -31,8 +30,7 @@ const UserModel = {
     return result.rows[0];
   },
 
-   //Crear nuevo usuario
-   
+  //Crear nuevo usuario
   create: async (username, email, hashedPassword) => {
     const query = `
       INSERT INTO users (username, email, password_hash) 
@@ -43,8 +41,7 @@ const UserModel = {
     return result.rows[0];
   },
 
-   //Actualizar score del usuario
-
+  //Actualizar score del usuario
   updateScore: async (userId, newScore) => {
     const query = 'UPDATE users SET total_score = $1 WHERE id = $2 RETURNING *';
     const result = await pool.query(query, [newScore, userId]);

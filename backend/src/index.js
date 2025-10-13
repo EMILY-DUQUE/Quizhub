@@ -1,11 +1,9 @@
-//crear cosntante app que sera requerida y la ruta 
-
+// src/index.js
 const app = require('./app');
 
-//inicializar nuestro servirdo 
+const PORT = app.get('port');
 
-app.listen(app.get('port'), ()=> {
-
-    console.log("servidor escuchando en el puerto", app.get('port'));
-
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor ejecutándose en http://localhost:${PORT}`);
+  console.log(`📊 Ambiente: ${process.env.NODE_ENV || 'development'}`);
 });
