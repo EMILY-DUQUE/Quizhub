@@ -9,16 +9,16 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Configurar puerto (sin requerirlo de .env)
+// Configurar puerto
 app.set('port', process.env.PORT || 5000);
 
 // Rutas
 const userRoutes = require('./routes/userRoutes');
- 
+const categoryRoutes = require('./routes/categoryRoutes');  // ✅ AGREGAR ESTA LÍNEA
 
 // Usar rutas
 app.use('/api', userRoutes);
- 
+app.use('/api', categoryRoutes);  // ✅ AGREGAR ESTA LÍNEA
 
 // Ruta de prueba
 app.get('/api/health', (req, res) => {

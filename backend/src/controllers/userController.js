@@ -51,12 +51,12 @@ const UserController = {
 
       res.status(201).json({
         success: true,
-        message: '✅ Usuario registrado correctamente',
+        message: ' Usuario registrado correctamente',
         data: { user: newUser }
       });
 
     } catch (error) {
-      console.error('❌ Error en register:', error);
+      console.error(' Error en register:', error);
       res.status(500).json({
         success: false,
         message: 'Error registrando usuario',
@@ -117,7 +117,7 @@ const UserController = {
       });
 
     } catch (error) {
-      console.error('❌ Error en login:', error);
+      console.error(' Error en login:', error);
       res.status(500).json({
         success: false,
         message: 'Error en login',
@@ -140,7 +140,7 @@ const UserController = {
         }
       });
     } catch (error) {
-      console.error('❌ Error en getAll:', error);
+      console.error(' Error en getAll:', error);
       res.status(500).json({
         success: false,
         message: 'Error consultando usuarios',
@@ -168,7 +168,7 @@ const UserController = {
         data: { user }
       });
     } catch (error) {
-      console.error('❌ Error en getById:', error);
+      console.error(' Error en getById:', error);
       res.status(500).json({
         success: false,
         message: 'Error consultando usuario',
