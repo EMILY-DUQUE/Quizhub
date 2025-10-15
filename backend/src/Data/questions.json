@@ -1,0 +1,321 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Programación",
+      "description": "Preguntas sobre lenguajes de programación, conceptos y mejores prácticas"
+    },
+    {
+      "id": 2,
+      "name": "Conocimiento General",
+      "description": "Preguntas de cultura general, historia, geografía y ciencias"
+    },
+    {
+      "id": 3,
+      "name": "Entretenimiento",
+      "description": "Preguntas sobre películas, música, series y videojuegos"
+    },
+    {
+      "id": 4,
+      "name": "Ciencia y Tecnología",
+      "description": "Preguntas sobre avances tecnológicos, física, química y biología"
+    },
+    {
+      "id": 5,
+      "name": "Deporte",
+      "description": "Preguntas sobre fútbol, baloncesto, tenis y otros deportes"
+    },
+    {
+      "id": 6,
+      "name": "Literatura",
+      "description": "Preguntas sobre autores, libros clásicos y literatura contemporánea"
+    },
+    {
+      "id": 7,
+      "name": "Matemáticas",
+      "description": "Preguntas sobre álgebra, geometría y conceptos matemáticos"
+    }
+  ],
+  "questions": [
+    {
+      "category_id": 1,
+      "title": "¿Cuál es el lenguaje de programación más usado para desarrollo web frontend?",
+      "type": "multiple_choice",
+      "correct_answer": "JavaScript",
+      "points": 10,
+      "options": [
+        "Python",
+        "JavaScript",
+        "C++",
+        "Java"
+      ]
+    },
+    {
+      "category_id": 1,
+      "title": "La programación orientada a objetos permite crear clases y objetos",
+      "type": "true_false",
+      "correct_answer": "Verdadero",
+      "points": 10
+    },
+    {
+      "category_id": 1,
+      "title": "¿Qué significa API?",
+      "type": "multiple_choice",
+      "correct_answer": "Interfaz de Programación de Aplicaciones",
+      "points": 10,
+      "options": [
+        "Aplicación de Programas Integrados",
+        "Interfaz de Programación de Aplicaciones",
+        "Administrador de Procesos de Internet",
+        "Algoritmo de Procesamiento Interno"
+      ]
+    },
+    {
+      "category_id": 1,
+      "title": "Python es un lenguaje compilado",
+      "type": "true_false",
+      "correct_answer": "Falso",
+      "points": 10
+    },
+    {
+      "category_id": 2,
+      "title": "¿Cuál es la capital de Japón?",
+      "type": "multiple_choice",
+      "correct_answer": "Tokio",
+      "points": 10,
+      "options": [
+        "Kioto",
+        "Osaka",
+        "Tokio",
+        "Yokohama"
+      ]
+    },
+    {
+      "category_id": 2,
+      "title": "La Gran Muralla China fue construida principalmente para defensa",
+      "type": "true_false",
+      "correct_answer": "Verdadero",
+      "points": 10
+    },
+    {
+      "category_id": 2,
+      "title": "¿En qué país se encuentra la Estatua de la Libertad?",
+      "type": "multiple_choice",
+      "correct_answer": "Estados Unidos",
+      "points": 10,
+      "options": [
+        "Francia",
+        "Canadá",
+        "Estados Unidos",
+        "México"
+      ]
+    },
+    {
+      "category_id": 2,
+      "title": "El Coliseo está ubicado en Roma, Italia",
+      "type": "true_false",
+      "correct_answer": "Verdadero",
+      "points": 10
+    },
+    {
+      "category_id": 3,
+      "title": "¿En qué año se estrenó la película 'Avatar' de James Cameron?",
+      "type": "multiple_choice",
+      "correct_answer": "2009",
+      "points": 10,
+      "options": [
+        "2007",
+        "2008",
+        "2009",
+        "2010"
+      ]
+    },
+    {
+      "category_id": 3,
+      "title": "La canción 'Bohemian Rhapsody' es de la banda The Beatles",
+      "type": "true_false",
+      "correct_answer": "Falso",
+      "points": 10
+    },
+    {
+      "category_id": 3,
+      "title": "¿Quién ganó el Grammy a mejor artista femenino en 2023?",
+      "type": "multiple_choice",
+      "correct_answer": "Taylor Swift",
+      "points": 10,
+      "options": [
+        "Ariana Grande",
+        "Taylor Swift",
+        "Beyoncé",
+        "Dua Lipa"
+      ]
+    },
+    {
+      "category_id": 3,
+      "title": "La serie 'Game of Thrones' tiene 10 temporadas",
+      "type": "true_false",
+      "correct_answer": "Falso",
+      "points": 10
+    },
+    {
+      "category_id": 4,
+      "title": "¿Cuál es la velocidad de la luz en el vacío?",
+      "type": "multiple_choice",
+      "correct_answer": "300,000 km/s",
+      "points": 10,
+      "options": [
+        "150,000 km/s",
+        "300,000 km/s",
+        "450,000 km/s",
+        "600,000 km/s"
+      ]
+    },
+    {
+      "category_id": 4,
+      "title": "Los agujeros negros no dejan escapar ni la luz",
+      "type": "true_false",
+      "correct_answer": "Verdadero",
+      "points": 10
+    },
+    {
+      "category_id": 4,
+      "title": "¿Quién desarrolló la teoría de la relatividad?",
+      "type": "multiple_choice",
+      "correct_answer": "Albert Einstein",
+      "points": 10,
+      "options": [
+        "Isaac Newton",
+        "Albert Einstein",
+        "Galileo Galilei",
+        "Stephen Hawking"
+      ]
+    },
+    {
+      "category_id": 4,
+      "title": "El ADN contiene la información genética de los organismos",
+      "type": "true_false",
+      "correct_answer": "Verdadero",
+      "points": 10
+    },
+    {
+      "category_id": 5,
+      "title": "¿Cuántos jugadores hay en un equipo de fútbol en el campo?",
+      "type": "multiple_choice",
+      "correct_answer": "11",
+      "points": 10,
+      "options": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ]
+    },
+    {
+      "category_id": 5,
+      "title": "Lionel Messi ganó la Copa del Mundo con Argentina en 2022",
+      "type": "true_false",
+      "correct_answer": "Verdadero",
+      "points": 10
+    },
+    {
+      "category_id": 5,
+      "title": "¿En qué país se juega el tenis sobre pista de arcilla más importante?",
+      "type": "multiple_choice",
+      "correct_answer": "Francia",
+      "points": 10,
+      "options": [
+        "Reino Unido",
+        "Francia",
+        "Australia",
+        "Estados Unidos"
+      ]
+    },
+    {
+      "category_id": 5,
+      "title": "El baloncesto fue inventado en Estados Unidos",
+      "type": "true_false",
+      "correct_answer": "Verdadero",
+      "points": 10
+    },
+    {
+      "category_id": 6,
+      "title": "¿Quién escribió 'Don Quijote'?",
+      "type": "multiple_choice",
+      "correct_answer": "Miguel de Cervantes",
+      "points": 10,
+      "options": [
+        "Gabriel García Márquez",
+        "Miguel de Cervantes",
+        "Jorge Luis Borges",
+        "Pablo Neruda"
+      ]
+    },
+    {
+      "category_id": 6,
+      "title": "'Cien años de soledad' es una novela de Gabriel García Márquez",
+      "type": "true_false",
+      "correct_answer": "Verdadero",
+      "points": 10
+    },
+    {
+      "category_id": 6,
+      "title": "¿En qué siglo vivió William Shakespeare?",
+      "type": "multiple_choice",
+      "correct_answer": "Siglo XVI y XVII",
+      "points": 10,
+      "options": [
+        "Siglo XIV y XV",
+        "Siglo XV y XVI",
+        "Siglo XVI y XVII",
+        "Siglo XVII y XVIII"
+      ]
+    },
+    {
+      "category_id": 6,
+      "title": "'El Gran Gatsby' fue escrito por F. Scott Fitzgerald",
+      "type": "true_false",
+      "correct_answer": "Verdadero",
+      "points": 10
+    },
+    {
+      "category_id": 7,
+      "title": "¿Cuál es el resultado de 15 + 23 × 2?",
+      "type": "multiple_choice",
+      "correct_answer": "61",
+      "points": 10,
+      "options": [
+        "46",
+        "61",
+        "76",
+        "53"
+      ]
+    },
+    {
+      "category_id": 7,
+      "title": "La raíz cuadrada de 144 es 12",
+      "type": "true_false",
+      "correct_answer": "Verdadero",
+      "points": 10
+    },
+    {
+      "category_id": 7,
+      "title": "¿Cuál es el área de un círculo con radio 5?",
+      "type": "multiple_choice",
+      "correct_answer": "78.5",
+      "points": 10,
+      "options": [
+        "31.4",
+        "62.8",
+        "78.5",
+        "125"
+      ]
+    },
+    {
+      "category_id": 7,
+      "title": "El número π (pi) es un número racional",
+      "type": "true_false",
+      "correct_answer": "Falso",
+      "points": 10
+    }
+  ]
+}

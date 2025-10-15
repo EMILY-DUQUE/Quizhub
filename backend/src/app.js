@@ -14,11 +14,13 @@ app.set('port', process.env.PORT || 5000);
 
 // Rutas
 const userRoutes = require('./routes/userRoutes');
-const categoryRoutes = require('./routes/categoryRoutes');  // ✅ AGREGAR ESTA LÍNEA
+const categoryRoutes = require('./routes/categoryRoutes');
+const questionRoutes = require('./routes/questionRoutes');  // ✅ AGREGAR ESTA LÍNEA
 
 // Usar rutas
 app.use('/api', userRoutes);
-app.use('/api', categoryRoutes);  // ✅ AGREGAR ESTA LÍNEA
+app.use('/api', categoryRoutes);
+app.use('/api', questionRoutes);  // ✅ AGREGAR ESTA LÍNEA
 
 // Ruta de prueba
 app.get('/api/health', (req, res) => {

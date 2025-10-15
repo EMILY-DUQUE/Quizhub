@@ -83,12 +83,12 @@ const CategoryController = {
         });
       }
 
-      // Crear categoría (SIN icon)
+      // Crear categoría
       const newCategory = await CategoryModel.create(name, description || null);
 
       res.status(201).json({
         success: true,
-        message: ' Categoría creada correctamente',
+        message: '✅ Categoría creada correctamente',
         data: { category: newCategory }
       });
     } catch (error) {
@@ -141,7 +141,7 @@ const CategoryController = {
 
       res.json({
         success: true,
-        message: 'Categoría actualizada correctamente',
+        message: '✅ Categoría actualizada correctamente',
         data: { category: updatedCategory }
       });
     } catch (error) {
@@ -174,7 +174,7 @@ const CategoryController = {
 
       res.json({
         success: true,
-        message: 'Categoría eliminada correctamente',
+        message: '✅ Categoría eliminada correctamente',
         data: { id }
       });
     } catch (error) {
@@ -182,6 +182,52 @@ const CategoryController = {
       res.status(500).json({
         success: false,
         message: 'Error eliminando categoría',
+        error: error.message
+      });
+    }
+  },
+
+  // POST /api/categories/import
+  // Importar varias categorías desde JSON
+  import: async (req, res) => {
+    try {
+      const { categories } = req.body;
+
+      if (!categories || !Array.isArray(categories) || categories.length === 0) {
+        return res.status(400).json({
+          success: false,
+          message: 'Debe enviar un arreglo de categorías'
+        });
+      }
+
+      const inserted = [];
+
+      for (const cat of categories) {
+        // Validar que tenga nombre
+        if (!cat.name) continue;
+
+        // Verificar si ya existe
+        const existing = await CategoryModel.getByName(cat.name);
+        if (existing) {
+          inserted.push(existing); // si ya existe, lo saltamos
+          continue;
+        }
+
+        // Crear la categoría
+        const newCat = await CategoryModel.create(cat.name, cat.description || null);
+        inserted.push(newCat);
+      }
+
+      res.json({
+        success: true,
+        message: `✅ ${inserted.length} categorías importadas correctamente`,
+        data: inserted
+      });
+    } catch (error) {
+      console.error('❌ Error en import:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Error importando categorías',
         error: error.message
       });
     }
