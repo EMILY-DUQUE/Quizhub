@@ -15,16 +15,18 @@ app.set('port', process.env.PORT || 5000);
 // Rutas
 const userRoutes = require('./routes/userRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
-const questionRoutes = require('./routes/questionRoutes');  // ✅ AGREGAR ESTA LÍNEA
+const questionRoutes = require('./routes/questionRoutes');  
+const answerRoutes = require('./routes/answerRoutes'); 
 
 // Usar rutas
 app.use('/api', userRoutes);
 app.use('/api', categoryRoutes);
-app.use('/api', questionRoutes);  // ✅ AGREGAR ESTA LÍNEA
+app.use('/api', questionRoutes);  
+app.use('/api', answerRoutes);
 
 // Ruta de prueba
 app.get('/api/health', (req, res) => {
-  res.json({ status: '✅ Servidor funcionando correctamente' });
+  res.json({ status: ' Servidor funcionando correctamente' });
 });
 
 // Manejo de rutas no encontradas
