@@ -17,12 +17,14 @@ const userRoutes = require('./routes/userRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const questionRoutes = require('./routes/questionRoutes');  
 const answerRoutes = require('./routes/answerRoutes'); 
+const rankingRoutes = require('./routes/rankingRoutes');
 
 // Usar rutas
 app.use('/api', userRoutes);
 app.use('/api', categoryRoutes);
 app.use('/api', questionRoutes);  
 app.use('/api', answerRoutes);
+app.use('/api', rankingRoutes);
 
 // Ruta de prueba
 app.get('/api/health', (req, res) => {
