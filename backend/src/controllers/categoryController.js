@@ -88,11 +88,11 @@ const CategoryController = {
 
       res.status(201).json({
         success: true,
-        message: '✅ Categoría creada correctamente',
+        message: 'Categoría creada correctamente',
         data: { category: newCategory }
       });
     } catch (error) {
-      console.error('❌ Error en create:', error);
+      console.error('Error en create:', error);
       res.status(500).json({
         success: false,
         message: 'Error creando categoría',
@@ -141,7 +141,7 @@ const CategoryController = {
 
       res.json({
         success: true,
-        message: '✅ Categoría actualizada correctamente',
+        message: ' Categoría actualizada correctamente',
         data: { category: updatedCategory }
       });
     } catch (error) {
@@ -174,7 +174,7 @@ const CategoryController = {
 
       res.json({
         success: true,
-        message: '✅ Categoría eliminada correctamente',
+        message: 'Categoría eliminada correctamente',
         data: { id }
       });
     } catch (error) {
@@ -220,11 +220,11 @@ const CategoryController = {
 
       res.json({
         success: true,
-        message: `✅ ${inserted.length} categorías importadas correctamente`,
+        message: ` ${inserted.length} categorías importadas correctamente`,
         data: inserted
       });
     } catch (error) {
-      console.error('❌ Error en import:', error);
+      console.error(' Error en import:', error);
       res.status(500).json({
         success: false,
         message: 'Error importando categorías',

@@ -4,7 +4,7 @@ const categoryRoutes = require('./routes/categoryRoutes');
 
 const app = express();
 
-// ⚡ Middleware para leer JSON en el body
+//  Middleware para leer JSON en el body
 app.use(express.json());
 
 // Configurar puerto

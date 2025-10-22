@@ -52,12 +52,12 @@ const QuestionController = {
 
       res.status(201).json({
         success: true,
-        message: '✅ Pregunta creada correctamente',
+        message: ' Pregunta creada correctamente',
         data: { question: newQuestion }
       });
 
     } catch (error) {
-      console.error('❌ Error en create:', error);
+      console.error(' Error en create:', error);
       res.status(500).json({
         success: false,
         message: 'Error creando pregunta',
@@ -80,7 +80,7 @@ const QuestionController = {
       });
 
     } catch (error) {
-      console.error('❌ Error en getAll:', error);
+      console.error('Error en getAll:', error);
       res.status(500).json({
         success: false,
         message: 'Error consultando preguntas',
@@ -115,7 +115,7 @@ const QuestionController = {
       });
 
     } catch (error) {
-      console.error('❌ Error en getByCategory:', error);
+      console.error('Error en getByCategory:', error);
       res.status(500).json({
         success: false,
         message: 'Error consultando preguntas',
@@ -149,7 +149,7 @@ const QuestionController = {
       });
 
     } catch (error) {
-      console.error('❌ Error en getById:', error);
+      console.error(' Error en getById:', error);
       res.status(500).json({
         success: false,
         message: 'Error consultando pregunta',
@@ -225,12 +225,12 @@ const QuestionController = {
 
       res.json({
         success: true,
-        message: '✅ Pregunta eliminada correctamente',
+        message: ' Pregunta eliminada correctamente',
         data: { id }
       });
 
     } catch (error) {
-      console.error('❌ Error en delete:', error);
+      console.error(' Error en delete:', error);
       res.status(500).json({
         success: false,
         message: 'Error eliminando pregunta',
@@ -268,7 +268,7 @@ const QuestionController = {
 
       res.status(201).json({
         success: true,
-        message: `✅ ${createdQuestions.length} preguntas importadas correctamente`,
+        message: ` ${createdQuestions.length} preguntas importadas correctamente`,
         data: {
           questions: createdQuestions,
           count: createdQuestions.length
@@ -276,7 +276,7 @@ const QuestionController = {
       });
 
     } catch (error) {
-      console.error('❌ Error en import:', error);
+      console.error(' Error en import:', error);
       res.status(500).json({
         success: false,
         message: 'Error importando preguntas',

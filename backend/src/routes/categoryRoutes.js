@@ -3,11 +3,11 @@ const express = require('express');
 const router = express.Router();
 const CategoryController = require('../controllers/categoryController');
 
-// ✅ Rutas de categorías
+//  Rutas de categorías
 router.get('/categories', CategoryController.getAll);           // Obtener todas
 router.post('/categories', CategoryController.create);          // Crear una
 
-// ⚠️ Importar primero (antes de :id)
+// Importar primero (antes de :id)
 router.post('/categories/import', CategoryController.import);   // Importar categorías
 
 router.get('/categories/:id', CategoryController.getById);      // Obtener una
