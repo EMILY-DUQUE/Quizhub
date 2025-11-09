@@ -10,7 +10,7 @@ router.post('/categories', CategoryController.create);          // Crear una
 // Importar primero (antes de :id)
 router.post('/categories/import', CategoryController.import);   // Importar categorías
 
-router.get('/categories/:id', CategoryController.getById);      // Obtener una
+router.get('/categories/:id', CategoryController.getById);      // Obtener 
 router.put('/categories/:id', CategoryController.update);       // Actualizar
 router.delete('/categories/:id', CategoryController.delete);    // Eliminar
 

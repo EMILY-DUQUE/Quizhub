@@ -291,7 +291,7 @@ const SessionController = {
       });
 
     } catch (error) {
-      console.error('❌ Error en getByUserId:', error);
+      console.error(' Error en getByUserId:', error);
       res.status(500).json({
         success: false,
         message: 'Error consultando sesiones',

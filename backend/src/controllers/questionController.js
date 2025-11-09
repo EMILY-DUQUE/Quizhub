@@ -192,12 +192,12 @@ const QuestionController = {
 
       res.json({
         success: true,
-        message: '✅ Pregunta actualizada correctamente',
+        message: ' Pregunta actualizada correctamente',
         data: { question: updatedQuestion }
       });
 
     } catch (error) {
-      console.error('❌ Error en update:', error);
+      console.error(' Error en update:', error);
       res.status(500).json({
         success: false,
         message: 'Error actualizando pregunta',

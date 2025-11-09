@@ -109,7 +109,7 @@ const UserController = {
 
       res.json({
         success: true,
-        message: '✅ Login exitoso',
+        message: 'Login exitoso',
         data: { 
           user,
           token

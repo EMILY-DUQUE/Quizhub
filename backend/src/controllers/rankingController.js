@@ -25,7 +25,7 @@ const RankingController = {
       });
 
     } catch (error) {
-      console.error('❌ Error en getGlobalRanking:', error);
+      console.error(' Error en getGlobalRanking:', error);
       res.status(500).json({
         success: false,
         message: 'Error consultando ranking',
@@ -98,7 +98,7 @@ const RankingController = {
       });
 
     } catch (error) {
-      console.error('❌ Error en getUserPosition:', error);
+      console.error(' Error en getUserPosition:', error);
       res.status(500).json({
         success: false,
         message: 'Error consultando posición',
@@ -118,7 +118,7 @@ const RankingController = {
       });
 
     } catch (error) {
-      console.error('❌ Error en getGeneralStats:', error);
+      console.error(' Error en getGeneralStats:', error);
       res.status(500).json({
         success: false,
         message: 'Error consultando estadísticas',
@@ -151,7 +151,7 @@ const RankingController = {
       });
 
     } catch (error) {
-      console.error('❌ Error en getActiveUsers:', error);
+      console.error(' Error en getActiveUsers:', error);
       res.status(500).json({
         success: false,
         message: 'Error consultando usuarios activos',
