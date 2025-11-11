@@ -1,15 +1,16 @@
+// backend/src/controllers/sessionController.js
 const SessionModel = require('../models/sessionModel');
 const UserModel = require('../models/userModel');
 const CategoryModel = require('../models/categoryModel');
 const QuestionModel = require('../models/questionModel');
+const RankingModel = require('../models/rankingModel'); // ✅ NUEVO
 
 const SessionController = {
-  // POST /api/sessions/start - Iniciar sesión
+  // POST /api/sessions/start
   start: async (req, res) => {
     try {
       const { user_id, category_id } = req.body;
 
-      // Validaciones
       if (!user_id || !category_id) {
         return res.status(400).json({
           success: false,
@@ -17,7 +18,6 @@ const SessionController = {
         });
       }
 
-      // Verificar que el usuario existe
       const user = await UserModel.getById(user_id);
       if (!user) {
         return res.status(404).json({
@@ -26,7 +26,6 @@ const SessionController = {
         });
       }
 
-      // Verificar que la categoría existe
       const category = await CategoryModel.getById(category_id);
       if (!category) {
         return res.status(404).json({
@@ -35,7 +34,6 @@ const SessionController = {
         });
       }
 
-      // Obtener preguntas de la categoría
       const questions = await QuestionModel.getByCategory(category_id);
       if (questions.length === 0) {
         return res.status(400).json({
@@ -44,12 +42,11 @@ const SessionController = {
         });
       }
 
-      // Crear sesión
       const session = await SessionModel.create(user_id, category_id, questions.length);
 
       res.status(201).json({
         success: true,
-        message: ' Sesión iniciada',
+        message: '✅ Sesión iniciada',
         data: {
           session,
           category: { id: category.id, name: category.name },
@@ -58,7 +55,7 @@ const SessionController = {
       });
 
     } catch (error) {
-      console.error('Error en start:', error);
+      console.error('❌ Error en start:', error);
       res.status(500).json({
         success: false,
         message: 'Error iniciando sesión',
@@ -67,7 +64,7 @@ const SessionController = {
     }
   },
 
-  // GET /api/sessions/:id - Ver sesión
+  // GET /api/sessions/:id
   getById: async (req, res) => {
     try {
       const { id } = req.params;
@@ -80,10 +77,8 @@ const SessionController = {
         });
       }
 
-      // Obtener categoría
       const category = await CategoryModel.getById(session.category_id);
 
-      // Calcular porcentaje
       const percentage = session.total_questions > 0 
         ? Math.round((session.current_question_index / session.total_questions) * 100)
         : 0;
@@ -102,7 +97,7 @@ const SessionController = {
       });
 
     } catch (error) {
-      console.error('Error en getById:', error);
+      console.error('❌ Error en getById:', error);
       res.status(500).json({
         success: false,
         message: 'Error consultando sesión',
@@ -111,13 +106,12 @@ const SessionController = {
     }
   },
 
-  // POST /api/sessions/:id/answer - Responder pregunta en sesión
+  // POST /api/sessions/:id/answer
   answerQuestion: async (req, res) => {
     try {
       const { id } = req.params;
       const { question_id, selected_answer, is_correct, points_earned } = req.body;
 
-      // Validaciones
       if (!question_id || selected_answer === undefined) {
         return res.status(400).json({
           success: false,
@@ -125,7 +119,6 @@ const SessionController = {
         });
       }
 
-      // Obtener sesión
       const session = await SessionModel.getById(id);
       if (!session) {
         return res.status(404).json({
@@ -141,7 +134,6 @@ const SessionController = {
         });
       }
 
-      // Actualizar progreso
       const newCorrectAnswers = session.correct_answers + (is_correct ? 1 : 0);
       const newTotalPoints = session.total_points + (points_earned || 0);
       const newQuestionIndex = session.current_question_index + 1;
@@ -155,7 +147,7 @@ const SessionController = {
 
       res.json({
         success: true,
-        message: 'Respuesta registrada',
+        message: '✅ Respuesta registrada',
         data: {
           session: updatedSession,
           feedback: {
@@ -166,7 +158,7 @@ const SessionController = {
       });
 
     } catch (error) {
-      console.error('Error en answerQuestion:', error);
+      console.error('❌ Error en answerQuestion:', error);
       res.status(500).json({
         success: false,
         message: 'Error registrando respuesta',
@@ -175,7 +167,7 @@ const SessionController = {
     }
   },
 
-  // POST /api/sessions/:id/complete - Completar sesión
+  // ✅ POST /api/sessions/:id/complete - ACTUALIZADO
   complete: async (req, res) => {
     try {
       const { id } = req.params;
@@ -195,17 +187,27 @@ const SessionController = {
         });
       }
 
-      // Completar sesión
+      // 1. Completar sesión
       const completedSession = await SessionModel.complete(id);
 
-      // Calcular estadísticas
+      // 2. Calcular estadísticas
       const accuracy = session.total_questions > 0
         ? Math.round((session.correct_answers / session.total_questions) * 100)
         : 0;
 
+      // ✅ 3. Obtener estadísticas actualizadas del usuario
+      const userStats = await RankingModel.getUserStats(session.user_id);
+
+      // ✅ 4. Obtener nueva posición en el ranking
+      const userPosition = await RankingModel.getUserGlobalPosition(session.user_id);
+
+      console.log('✅ Sesión completada');
+      console.log('📊 Estadísticas:', userStats);
+      console.log('🏆 Posición:', userPosition);
+
       res.json({
         success: true,
-        message: ' Sesión completada',
+        message: '✅ Sesión completada',
         data: {
           session: completedSession,
           results: {
@@ -213,12 +215,14 @@ const SessionController = {
             correct_answers: session.correct_answers,
             total_points: session.total_points,
             accuracy: accuracy
-          }
+          },
+          user_stats: userStats, // ✅ Estadísticas actualizadas
+          ranking_position: userPosition // ✅ Posición actualizada
         }
       });
 
     } catch (error) {
-      console.error('Error en complete:', error);
+      console.error('❌ Error en complete:', error);
       res.status(500).json({
         success: false,
         message: 'Error completando sesión',
@@ -227,7 +231,7 @@ const SessionController = {
     }
   },
 
-  // POST /api/sessions/:id/abandon - Abandonar sesión
+  // POST /api/sessions/:id/abandon
   abandon: async (req, res) => {
     try {
       const { id } = req.params;
@@ -247,17 +251,16 @@ const SessionController = {
         });
       }
 
-      // Abandonar sesión
       const abandonedSession = await SessionModel.abandon(id);
 
       res.json({
         success: true,
-        message: 'Sesión abandonada',
+        message: '🚪 Sesión abandonada',
         data: { session: abandonedSession }
       });
 
     } catch (error) {
-      console.error(' Error en abandon:', error);
+      console.error('❌ Error en abandon:', error);
       res.status(500).json({
         success: false,
         message: 'Error abandonando sesión',
@@ -266,7 +269,7 @@ const SessionController = {
     }
   },
 
-  // GET /api/sessions/user/:userId - Historial de sesiones
+  // GET /api/sessions/user/:userId
   getByUserId: async (req, res) => {
     try {
       const { userId } = req.params;
@@ -291,7 +294,7 @@ const SessionController = {
       });
 
     } catch (error) {
-      console.error(' Error en getByUserId:', error);
+      console.error('❌ Error en getByUserId:', error);
       res.status(500).json({
         success: false,
         message: 'Error consultando sesiones',
@@ -300,7 +303,7 @@ const SessionController = {
     }
   },
 
-  // GET /api/sessions/user/:userId/completed - Sesiones completadas
+  // GET /api/sessions/user/:userId/completed
   getCompletedByUserId: async (req, res) => {
     try {
       const { userId } = req.params;
@@ -325,7 +328,7 @@ const SessionController = {
       });
 
     } catch (error) {
-      console.error(' Error en getCompletedByUserId:', error);
+      console.error('❌ Error en getCompletedByUserId:', error);
       res.status(500).json({
         success: false,
         message: 'Error consultando sesiones',

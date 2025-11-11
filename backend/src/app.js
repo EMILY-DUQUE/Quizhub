@@ -28,7 +28,8 @@ app.use('/api', questionRoutes);
 app.use('/api', answerRoutes);
 app.use('/api', sessionRoutes);
 app.use('/api', rankingRoutes);
-  
+  app.use('/uploads', express.static('uploads'));
+
 
 // Ruta de prueba
 app.get('/api/health', (req, res) => {
